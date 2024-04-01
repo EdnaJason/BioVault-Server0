@@ -4,6 +4,7 @@ from application import db
 from .route_func import fpMatch
 import numpy as np
 import pymongo
+
 @app.route("/")
 def home():
     return  {"status": "success", "message": "Connected to server 1"}
@@ -31,6 +32,7 @@ def log():
 def reg():
     #code to recieve data from the server insert to mongo db with user id
     data=request.json
+    print("In server 1")
     print(data)
     #data = msgpack.loads(data)
     length = data['data']['len']
