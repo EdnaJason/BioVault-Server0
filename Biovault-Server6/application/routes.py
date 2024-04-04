@@ -16,7 +16,7 @@ def log():
     description = data['data']['descrip'] #feature set segment
     user_id = data['data']['user_id']
     query = {"user_id": user_id}
-    result = db.collection6.find_one(query) #retrieve stored feature set from database
+    result = db.collection1.find_one(query) #retrieve stored feature set from database
     rdescription= np.array(result["description"])
     rlength= result["length"]
      #retrieved data and the arrived data are matched
@@ -38,7 +38,7 @@ def reg():
     user_id = data['data']['user_id']
     #description= np.array(description, dtype=float32)
     try:
-        insert_result = db.collection6.insert_one({"length": length, "description": description, "user_id": user_id})
+        insert_result = db.collection1.insert_one({"length": length, "description": description, "user_id": user_id})
         return {"success": True, "message": f"Data inserted with ID: {insert_result.inserted_id}"}, 201  # Created status code
     except pymongo.errors.PyMongoError as e:
         return {"success": False, "message": f"Error inserting data: {str(e)}"}, 500  # Internal Server Error
