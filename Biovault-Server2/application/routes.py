@@ -15,6 +15,7 @@ def log():
     length = data['data']['len']
     description =np.array( data['data']['descrip']) #feature set segment
     user_id = data['data']['user_id']
+    print("length: ",length)
     query = {"user_id": user_id}
     result = db.fing1.find_one(query) #retrieve stored feature set from database
 
@@ -50,6 +51,7 @@ def reg():
     length = data['data']['len']
     description = data['data']['descrip']
     user_id = data['data']['user_id']
+    print("length: ",length)
     #description= np.array(description, dtype=float32)
     try:
         insert_result = db.fing1.insert_one({"length": length, "description": description, "user_id": user_id})
